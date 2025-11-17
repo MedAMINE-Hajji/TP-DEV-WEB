@@ -1,0 +1,78 @@
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.score-box {
+  text-align: center;
+}
+
+.score-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.score-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #3498db;
+  line-height: 1;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}
+
+.stat-item.correct {
+  background-color: #d4edda;
+}
+
+.stat-item.incorrect {
+  background-color: #f8d7da;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.stat-item.correct .stat-icon {
+  color: #27ae60;
+}
+
+.stat-item.incorrect .stat-icon {
+  color: #e74c3c;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.stat-divider {
+  font-size: 1.5rem;
+  color: #bdc3c7;
+  font-weight: bold;
+}

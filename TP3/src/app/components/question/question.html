@@ -1,0 +1,11 @@
+<div class="question-container">
+  <h3 class="question-text">{{ question }}</h3>
+  <div class="options">
+    <button 
+      *ngFor="let option of options" 
+      class="option-btn"
+      (click)="selectionnerOption(option)">
+      {{ option }}
+    </button>
+  </div>
+</div>
