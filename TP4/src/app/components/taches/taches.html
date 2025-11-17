@@ -1,0 +1,128 @@
+<div class="taches-container">
+  <h2>Activités 5 et 6 : Gestion de Tâches Complète</h2>
+  <p class="subtitle">Combinaison de *ngIf, *ngFor, [ngClass] et [ngStyle]</p>
+
+  <!-- Statistiques -->
+  <div class="stats-container">
+    <div class="stat-card">
+      <span class="stat-number">{{ taches.length }}</span>
+      <span class="stat-label">Total</span>
+    </div>
+    <div class="stat-card completed">
+      <span class="stat-number">{{ getTachesCompletees() }}</span>
+      <span class="stat-label">Complétées</span>
+    </div>
+    <div class="stat-card pending">
+      <span class="stat-number">{{ getTachesEnCours() }}</span>
+      <span class="stat-label">En cours</span>
+    </div>
+  </div>
+
+  <!-- Formulaire pour ajouter une nouvelle tâche -->
+  <div class="form-container">
+    <h3>Ajouter une nouvelle tâche</h3>
+    <div class="form-group">
+      <input 
+        type="text" 
+        [(ngModel)]="newDescription" 
+        placeholder="Description de la tâche"
+        class="input-field"
+        (keyup.enter)="addTache()"
+      />
+      <select [(ngModel)]="newPriorite" class="select-field">
+        <option value="haute">🔴 Haute</option>
+        <option value="moyenne">🟠 Moyenne</option>
+        <option value="basse">🟢 Basse</option>
+      </select>
+      <button (click)="addTache()" class="btn-add">
+        ➕ Ajouter
+      </button>
+    </div>
+  </div>
+
+  <!-- Message si la liste est vide (Activité 6 : *ngIf...else) -->
+  <div class="taches-list" *ngIf="taches.length > 0; else pasDeTaches">
+    <h3>Liste des Tâches</h3>
+    
+    <!-- Itération avec *ngFor -->
+    <div 
+      *ngFor="let tache of taches; let i = index" 
+      class="tache-card"
+      [ngClass]="{ 'completed': tache.statut }"
+    >
+      <!-- Indicateur de priorité avec [ngStyle] -->
+      <div 
+        class="priorite-indicator"
+        [ngStyle]="{
+          'background-color': getPrioriteColor(tache.priorite),
+          'width': '5px',
+          'height': '100%',
+          'position': 'absolute',
+          'left': '0',
+          'top': '0',
+          'border-radius': '8px 0 0 8px'
+        }"
+      ></div>
+
+      <div class="tache-content">
+        <!-- Checkbox pour basculer le statut -->
+        <input 
+          type="checkbox" 
+          [checked]="tache.statut" 
+          (change)="toggleStatut(tache)"
+          class="tache-checkbox"
+        />
+
+        <!-- Description avec classe conditionnelle [ngClass] pour barrer le texte -->
+        <span 
+          class="tache-description"
+          [ngClass]="{ 'line-through': tache.statut }"
+          [ngStyle]="{
+            'color': getPrioriteColor(tache.priorite),
+            'font-weight': tache.priorite === 'haute' ? 'bold' : 'normal'
+          }"
+        >
+          {{ tache.description }}
+        </span>
+
+        <!-- Badge de priorité -->
+        <span 
+          class="badge-priorite"
+          [ngStyle]="{
+            'background-color': getPrioriteColor(tache.priorite),
+            'color': 'white',
+            'padding': '4px 10px',
+            'border-radius': '12px',
+            'font-size': '11px',
+            'font-weight': 'bold',
+            'text-transform': 'uppercase'
+          }"
+        >
+          {{ tache.priorite }}
+        </span>
+
+        <!-- Badge de statut -->
+        <span 
+          class="badge-statut"
+          [ngClass]="{ 'badge-complete': tache.statut, 'badge-pending': !tache.statut }"
+        >
+          {{ tache.statut ? '✓ Complétée' : '⏳ En cours' }}
+        </span>
+
+        <!-- Bouton de suppression -->
+        <button (click)="deleteTache(i)" class="btn-delete">
+          🗑️
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template alternatif avec ng-template (Activité 6) -->
+  <ng-template #pasDeTaches>
+    <div class="no-taches">
+      <div class="empty-icon">📋</div>
+      <h3>Aucune tâche à afficher</h3>
+      <p>Vous n'avez pas de tâches en cours. Ajoutez-en une pour commencer !</p>
+    </div>
+  </ng-template>
+</div>

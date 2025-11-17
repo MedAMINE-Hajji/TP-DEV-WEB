@@ -1,0 +1,109 @@
+<div class="produits-container">
+  <h2>Activité 4 : Styles dynamiques avec [ngStyle]</h2>
+
+  <!-- Formulaire pour ajouter un nouveau produit -->
+  <div class="form-container">
+    <h3>Ajouter un nouveau produit</h3>
+    <div class="form-group">
+      <input 
+        type="text" 
+        [(ngModel)]="newNom" 
+        placeholder="Nom du produit"
+        class="input-field"
+      />
+      <input 
+        type="number" 
+        [(ngModel)]="newStock" 
+        placeholder="Stock"
+        min="0"
+        class="input-field"
+      />
+      <button (click)="addProduit()" class="btn-add">
+        ➕ Ajouter
+      </button>
+    </div>
+  </div>
+
+  <!-- Liste des produits avec ngStyle -->
+  <div class="produits-list">
+    <h3>Inventaire des Produits ({{ produits.length }})</h3>
+    
+    <div class="produits-grid">
+      <div 
+        *ngFor="let produit of produits; let i = index" 
+        class="produit-card"
+      >
+        <div class="produit-header">
+          <h4>{{ produit.nom }}</h4>
+        </div>
+        
+        <div class="stock-info">
+          <div class="stock-label">Niveau de stock:</div>
+          <div 
+            class="stock-value"
+            [ngStyle]="{
+              'color': getStockColor(produit.stock),
+              'font-weight': 'bold',
+              'font-size': '24px',
+              'text-shadow': '2px 2px 4px rgba(0,0,0,0.2)'
+            }"
+          >
+            {{ produit.stock }} unités
+          </div>
+          
+          <div 
+            class="stock-status"
+            [ngStyle]="{
+              'background-color': getStockColor(produit.stock),
+              'color': 'white',
+              'padding': '8px 15px',
+              'border-radius': '20px',
+              'text-align': 'center',
+              'margin-top': '10px',
+              'font-weight': 'bold'
+            }"
+          >
+            {{ getStockStatus(produit.stock) }}
+          </div>
+        </div>
+
+        <div 
+          class="stock-bar-container"
+          [ngStyle]="{
+            'background': '#e0e0e0',
+            'border-radius': '10px',
+            'overflow': 'hidden',
+            'height': '20px',
+            'margin': '15px 0'
+          }"
+        >
+          <div 
+            class="stock-bar"
+            [ngStyle]="{
+              'width': (produit.stock > 100 ? 100 : produit.stock) + '%',
+              'background': getStockColor(produit.stock),
+              'height': '100%',
+              'transition': 'width 0.3s ease'
+            }"
+          ></div>
+        </div>
+
+        <div class="produit-actions">
+          <button (click)="decrementStock(produit)" class="btn-action btn-minus">
+            ➖
+          </button>
+          <button (click)="incrementStock(produit)" class="btn-action btn-plus">
+            ➕
+          </button>
+          <button (click)="deleteProduit(i)" class="btn-action btn-delete">
+            🗑️
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="produits.length === 0" class="no-produits">
+      <p>📦 Aucun produit en stock. Ajoutez-en un !</p>
+    </div>
+  </div>
+</div>

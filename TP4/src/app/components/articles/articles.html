@@ -1,0 +1,63 @@
+<div class="articles-container">
+  <h2>Activités 2 et 3 : Liste d'articles avec *ngFor et [ngClass]</h2>
+
+  <!-- Formulaire pour ajouter un nouvel article -->
+  <div class="form-container">
+    <h3>Ajouter un nouvel article</h3>
+    <div class="form-group">
+      <input 
+        type="text" 
+        [(ngModel)]="newTitle" 
+        placeholder="Titre de l'article"
+        class="input-field"
+      />
+      <input 
+        type="text" 
+        [(ngModel)]="newContent" 
+        placeholder="Contenu de l'article"
+        class="input-field"
+      />
+      <select [(ngModel)]="newImportance" class="select-field">
+        <option value="élevée">Importance Élevée</option>
+        <option value="moyenne">Importance Moyenne</option>
+        <option value="faible">Importance Faible</option>
+      </select>
+      <button (click)="addArticle()" class="btn-add">
+        ➕ Ajouter l'article
+      </button>
+    </div>
+  </div>
+
+  <!-- Liste des articles avec ngFor et ngClass -->
+  <div class="articles-list">
+    <h3>Liste des Articles ({{ articles.length }})</h3>
+    
+    <div 
+      *ngFor="let article of articles; let i = index"
+      [ngClass]="{
+        'important': article.importance === 'élevée',
+        'moyen': article.importance === 'moyenne',
+        'faible': article.importance === 'faible'
+      }"
+      class="article-card"
+    >
+      <div class="article-header">
+        <h4>{{ article.titre }}</h4>
+        <span class="badge" [ngClass]="'badge-' + article.importance">
+          {{ article.importance }}
+        </span>
+      </div>
+      <p class="article-content">{{ article.contenu }}</p>
+      <div class="article-footer">
+        <span class="article-number">Article #{{ i + 1 }}</span>
+        <button (click)="deleteArticle(i)" class="btn-delete">
+          🗑️ Supprimer
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="articles.length === 0" class="no-articles">
+      <p>📝 Aucun article pour le moment. Ajoutez-en un !</p>
+    </div>
+  </div>
+</div>

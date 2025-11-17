@@ -1,0 +1,40 @@
+<div class="welcome-container">
+  <h2>Activité 1 : Affichage conditionnel avec *ngIf</h2>
+  
+  <!-- Version simple avec bouton toggle -->
+  <div class="simple-version">
+    <h3>Version Simple</h3>
+    <button (click)="toggleLogin()" class="btn-toggle">
+      {{ isLoggedIn ? 'Se déconnecter' : 'Se connecter' }}
+    </button>
+    
+    <div *ngIf="isLoggedIn" class="welcome-message success">
+      <p>✅ Bienvenue, utilisateur!</p>
+    </div>
+    
+    <div *ngIf="!isLoggedIn" class="info-message">
+      <p>ℹ️ Veuillez vous connecter pour accéder au contenu.</p>
+    </div>
+  </div>
+
+  <!-- Défi : Version avec validation -->
+  <div class="challenge-version">
+    <h3>Défi : Connexion avec validation</h3>
+    
+    <div *ngIf="!isLoggedIn" class="login-form">
+      <input 
+        type="text" 
+        [(ngModel)]="username" 
+        placeholder="Entrez votre prénom (Mohamed)"
+        class="input-field"
+      />
+      <button (click)="login()" class="btn-login">Se connecter</button>
+    </div>
+    
+    <div *ngIf="isLoggedIn" class="welcome-panel">
+      <h4>🎉 Bienvenue, {{ expectedName }} !</h4>
+      <p>Vous êtes maintenant connecté au système.</p>
+      <button (click)="logout()" class="btn-logout">Se déconnecter</button>
+    </div>
+  </div>
+</div>

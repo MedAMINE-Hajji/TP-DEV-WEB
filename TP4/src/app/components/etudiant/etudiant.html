@@ -1,0 +1,102 @@
+<div class="etudiant-container">
+  <h2>Atelier Guidé : Affichage Maître / Détail</h2>
+  <p class="subtitle">Liste des Étudiants avec *ngFor et *ngIf</p>
+
+  <!-- Section Maître : Liste des étudiants -->
+  <div class="master-section">
+    <h3>Liste des Étudiants</h3>
+    <ul class="etudiants">
+      <li 
+        *ngFor="let e1 of etuds" 
+        [class.selected]="e1 === selectedEtudiant"
+        (click)="onSelect(e1)"
+      >
+        <span class="badge">{{ e1.id }}</span>
+        <span class="name">{{ e1.name }}</span>
+        <span class="classe">{{ e1.classe }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Section Détail : Détails de l'étudiant sélectionné -->
+  <div *ngIf="selectedEtudiant" class="detail-section">
+    <h3>Détails de l'Étudiant</h3>
+    <div class="detail-card">
+      <div class="detail-header">
+        <h2>{{ selectedEtudiant.name | uppercase }}</h2>
+        <span class="detail-badge">ID: {{ selectedEtudiant.id }}</span>
+      </div>
+      
+      <div class="detail-body">
+        <div class="detail-item">
+          <span class="label">🆔 ID:</span>
+          <span class="value">{{ selectedEtudiant.id }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="label">👤 Nom:</span>
+          <span class="value">{{ selectedEtudiant.name }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="label">🎓 Classe:</span>
+          <span class="value">{{ selectedEtudiant.classe || 'Non spécifiée' }}</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="label">🎂 Âge:</span>
+          <span class="value">{{ selectedEtudiant.age || 'Non spécifié' }} ans</span>
+        </div>
+        
+        <div class="detail-item">
+          <span class="label">📧 Email:</span>
+          <span class="value">{{ selectedEtudiant.email || 'Non spécifié' }}</span>
+        </div>
+      </div>
+
+      <!-- Formulaire d'édition avec ngModel -->
+      <div class="edit-section">
+        <h4>Modifier les informations</h4>
+        <div class="form-group">
+          <label>Nom:</label>
+          <input 
+            type="text" 
+            [(ngModel)]="selectedEtudiant.name" 
+            class="input-field"
+          />
+        </div>
+        <div class="form-group">
+          <label>Classe:</label>
+          <input 
+            type="text" 
+            [(ngModel)]="selectedEtudiant.classe" 
+            class="input-field"
+          />
+        </div>
+        <div class="form-group">
+          <label>Âge:</label>
+          <input 
+            type="number" 
+            [(ngModel)]="selectedEtudiant.age" 
+            class="input-field"
+          />
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input 
+            type="email" 
+            [(ngModel)]="selectedEtudiant.email" 
+            class="input-field"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message si aucun étudiant n'est sélectionné -->
+  <div *ngIf="!selectedEtudiant" class="no-selection">
+    <div class="empty-icon">👈</div>
+    <h3>Aucun étudiant sélectionné</h3>
+    <p>Cliquez sur un étudiant dans la liste pour voir ses détails</p>
+  </div>
+</div>

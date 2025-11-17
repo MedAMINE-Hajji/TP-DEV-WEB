@@ -1,0 +1,201 @@
+.articles-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+/* Form Container */
+.form-container {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-field, .select-field {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.input-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.select-field {
+  min-width: 180px;
+}
+
+.input-field:focus, .select-field:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-add:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(17, 153, 142, 0.4);
+}
+
+/* Articles List */
+.articles-list {
+  margin-top: 20px;
+}
+
+.article-card {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: slideIn 0.3s ease-out;
+}
+
+.article-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* Classes conditionnelles avec ngClass (Activité 3) */
+.article-card.important {
+  background-color: #ffcccc;
+  border: 2px solid #ff4444;
+  border-left: 5px solid #ff0000;
+}
+
+.article-card.moyen {
+  background-color: #fff2cc;
+  border: 2px solid #ffaa00;
+  border-left: 5px solid #ff8800;
+}
+
+.article-card.faible {
+  background-color: #ccffcc;
+  border: 2px solid #44ff44;
+  border-left: 5px solid #00aa00;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.article-header h4 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.badge-élevée {
+  background: #ff4444;
+  color: white;
+}
+
+.badge-moyenne {
+  background: #ff8800;
+  color: white;
+}
+
+.badge-faible {
+  background: #00aa00;
+  color: white;
+}
+
+.article-content {
+  color: #555;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.article-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.article-number {
+  font-size: 12px;
+  color: #888;
+  font-style: italic;
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 6px rgba(235, 51, 73, 0.4);
+}
+
+.no-articles {
+  text-align: center;
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  color: #888;
+  font-size: 18px;
+}
+
+/* Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
