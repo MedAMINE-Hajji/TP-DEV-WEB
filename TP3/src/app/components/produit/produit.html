@@ -1,0 +1,33 @@
+<div class="produit-container" 
+     [ngClass]="{'en-stock': enStock, 'hors-stock': !enStock}"
+     [ngStyle]="{'opacity': enStock ? '1' : '0.5'}">
+  
+  <!-- Activité 7: Interpolation du nom du produit -->
+  <h3>{{ nomProduit }}</h3>
+  
+  <!-- Activité 2: Property binding pour l'image -->
+  <img [src]="imageUrl" [alt]="nomProduit" class="product-image">
+  
+  <p class="product-description">Un excellent produit de qualité supérieure.</p>
+  
+  <!-- Activité 8: Utilisation du pipe currency -->
+  <p class="product-price">Prix: {{ prix | currency:'EUR':'symbol':'1.2-2':'fr' }}</p>
+  
+  <p class="stock-status">
+    <span [class.in-stock]="enStock" [class.out-of-stock]="!enStock">
+      {{ enStock ? '✓ En stock' : '✗ Hors stock' }}
+    </span>
+  </p>
+  
+  <!-- Activité 5: Bouton pour basculer le stock -->
+  <button class="btn btn-secondary" (click)="toggleStock()">
+    {{ enStock ? 'Marquer comme Hors Stock' : 'Marquer comme En Stock' }}
+  </button>
+  
+  <!-- Activité 3 & 6: Event binding avec bouton désactivé conditionnellement -->
+  <button class="btn btn-primary" 
+          (click)="ajouterProduit()" 
+          [disabled]="!enStock">
+    Ajouter au Panier
+  </button>
+</div>
