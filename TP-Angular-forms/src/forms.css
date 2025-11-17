@@ -1,0 +1,39 @@
+/* Styles de validation pour les formulaires Angular */
+
+/* Barre de couleur à gauche des champs obligatoires */
+.form-control.ng-valid[required], .form-control.ng-valid.required {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.form-control.ng-invalid:not(form) {
+  border-left: 5px solid #a94442; /* red */
+}
+
+/* États des champs */
+.form-control.ng-touched.ng-invalid {
+  border-color: #a94442;
+  background-color: #fff5f5;
+}
+
+.form-control.ng-valid.ng-dirty {
+  border-color: #42A948;
+}
+
+/* Classes Bootstrap pour les états de validation */
+.ng-valid[required], .ng-valid.required {
+  border-left: 5px solid #42A948;
+}
+
+.ng-invalid:not(form) {
+  border-left: 5px solid #a94442;
+}
+
+/* Feedback visuel sur les champs */
+.form-control.ng-pristine {
+  border-left: 5px solid #999;
+}
+
+/* Animation pour les transitions */
+.form-control {
+  transition: border-color 0.3s ease, background-color 0.3s ease, border-left 0.3s ease;
+}
