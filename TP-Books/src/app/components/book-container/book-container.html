@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="header">
+    <h1>Book Catalog</h1>
+    <p class="subtitle">Gestion complète de votre bibliothèque</p>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="form-section">
+      <app-book-form 
+        [categories]="categories"
+        [selectedBook]="selectedBook()"
+        (bookSubmit)="selectedBook() ? updateBook($event) : addBook($event)"
+        (cancelEdit)="cancelEdit()">
+      </app-book-form>
+    </div>
+
+    <div class="list-section">
+      <app-book-list 
+        [books]="books()"
+        (deleteBook)="deleteBook($event)"
+        (editBook)="editBook($event)">
+      </app-book-list>
+    </div>
+  </div>
+</div>
