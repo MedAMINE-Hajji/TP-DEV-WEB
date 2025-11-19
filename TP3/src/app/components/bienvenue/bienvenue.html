@@ -1,4 +1,70 @@
-<div class="bienvenue-container">
-  <h2>{{ message }}</h2>
-  <p>Cette application démontre les concepts de data binding dans Angular.</p>
+<div class="activites-container">
+  <!-- En-tête de la section -->
+  <div class="page-header">
+    <h1 class="page-title">📚 {{ titre }}</h1>
+    <p class="page-subtitle">{{ message }}</p>
+  </div>
+
+  <!-- Section Message de Bienvenue (Activité 1) -->
+  <section class="welcome-section">
+    <div class="welcome-card">
+      <div class="welcome-icon">👋</div>
+      <h2>Bienvenue dans notre boutique</h2>
+      <p>Explorez nos produits high-tech et ajoutez-les à votre panier !</p>
+    </div>
+  </section>
+
+  <!-- Layout Principal avec Grid -->
+  <div class="main-grid">
+    <!-- Colonne Gauche: Produits -->
+    <div class="products-column">
+      <h2 class="section-title">🛒 Nos Produits</h2>
+      
+      <!-- Activités 2,3,5,7,8: Produit 1 -->
+      <app-produit 
+        [nomProduit]="'Ordinateur Portable'"
+        (ajouterAuPanier)="gererAjoutAuPanier($event)">
+      </app-produit>
+      
+      <!-- Activités 2,3,5,7,8: Produit 2 -->
+      <app-produit 
+        [nomProduit]="'Smartphone'"
+        (ajouterAuPanier)="gererAjoutAuPanier($event)">
+      </app-produit>
+    </div>
+    
+    <!-- Colonne Droite: Panier et Utilisateur -->
+    <div class="sidebar-column">
+      <!-- Activité 6: Panier -->
+      <div class="sidebar-section">
+        <h2 class="section-title">🛍️ Mon Panier</h2>
+        <app-panier [items]="panierItems"></app-panier>
+      </div>
+      
+      <!-- Activité 4: Utilisateur -->
+      <div class="sidebar-section">
+        <h2 class="section-title">👤 Informations Utilisateur</h2>
+        <app-utilisateur></app-utilisateur>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Informative -->
+  <div class="info-section">
+    <div class="info-card">
+      <span class="info-icon">📦</span>
+      <h3>Livraison Gratuite</h3>
+      <p>Pour toute commande supérieure à 50€</p>
+    </div>
+    <div class="info-card">
+      <span class="info-icon">🔒</span>
+      <h3>Paiement Sécurisé</h3>
+      <p>Vos données sont protégées</p>
+    </div>
+    <div class="info-card">
+      <span class="info-icon">👍</span>
+      <h3>Garantie 2 ans</h3>
+      <p>Sur tous nos produits</p>
+    </div>
+  </div>
 </div>

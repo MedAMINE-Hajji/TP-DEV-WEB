@@ -11,7 +11,10 @@ export class Home {
   constructor(private router: Router) {}
   
   commencerQuiz(): void {
-    // Navigation vers le composant Game sera implémentée plus tard avec le routing
-    console.log('Démarrage du quiz...');
+    this.router.navigate(['/quiz']);
+  }
+  
+  allerAuxActivites(): void {
+    this.router.navigate(['/activites']);
   }
 }

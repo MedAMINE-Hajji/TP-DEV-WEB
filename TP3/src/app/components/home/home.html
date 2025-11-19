@@ -1,30 +1,68 @@
 <div class="home-container">
   <div class="hero-section">
-    <h1>🎮 Jeu de Quiz</h1>
-    <p class="subtitle">Testez vos connaissances !</p>
-    
-    <div class="info-cards">
-      <div class="info-card">
-        <span class="icon">❓</span>
-        <h3>10 Questions</h3>
-        <p>Des questions variées</p>
-      </div>
+    <div class="hero-content">
+      <h1 class="hero-title">🎓 TP3 - Angular Data Binding</h1>
+      <p class="hero-subtitle">Découvrez les concepts de data binding et d'interpolation avec Angular</p>
       
-      <div class="info-card">
-        <span class="icon">⏱️</span>
-        <h3>Pas de limite</h3>
-        <p>Prenez votre temps</p>
-      </div>
-      
-      <div class="info-card">
-        <span class="icon">🏆</span>
-        <h3>Score final</h3>
-        <p>Suivez votre progression</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="feature-icon">📚</span>
+          <h3>Activités Pratiques</h3>
+          <p>8 activités pour maîtriser le data binding</p>
+          <ul class="feature-list">
+            <li>Interpolation</li>
+            <li>Property Binding</li>
+            <li>Event Binding</li>
+            <li>Two-way Binding</li>
+            <li>@Input / @Output</li>
+          </ul>
+          <button class="btn btn-primary" (click)="allerAuxActivites()">
+            Découvrir 🚀
+          </button>
+        </div>
+        
+        <div class="feature-card featured">
+          <span class="feature-icon">🎮</span>
+          <h3>Jeu de Quiz</h3>
+          <p>Testez vos connaissances de manière interactive</p>
+          <ul class="feature-list">
+            <li>❓ 10 Questions variées</li>
+            <li>⏱️ Pas de limite de temps</li>
+            <li>🏆 Score en temps réel</li>
+            <li>🎯 Résultats détaillés</li>
+          </ul>
+          <button class="btn btn-gradient" (click)="commencerQuiz()">
+            Commencer le Quiz 🎆
+          </button>
+        </div>
       </div>
     </div>
-    
-    <button class="btn-start" (click)="commencerQuiz()">
-      Commencer le Quiz
-    </button>
+  </div>
+  
+  <!-- Section Technologies -->
+  <div class="tech-section">
+    <h2 class="section-title">Technologies Utilisées</h2>
+    <div class="tech-grid">
+      <div class="tech-card">
+        <span class="tech-logo">🅰️</span>
+        <h4>Angular 20</h4>
+        <p>Framework moderne</p>
+      </div>
+      <div class="tech-card">
+        <span class="tech-logo">🔷</span>
+        <h4>TypeScript</h4>
+        <p>Typage statique</p>
+      </div>
+      <div class="tech-card">
+        <span class="tech-logo">🎨</span>
+        <h4>CSS3</h4>
+        <p>Animations modernes</p>
+      </div>
+      <div class="tech-card">
+        <span class="tech-logo">🛣️</span>
+        <h4>Router</h4>
+        <p>Navigation SPA</p>
+      </div>
+    </div>
   </div>
 </div>
